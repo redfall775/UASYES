@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Pribadi | Rizki</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif;}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top left, rgba(59,130,246,.15), transparent 70%),
+        radial-gradient(circle at bottom right, rgba(236,72,153,.15), transparent 70%),
+        linear-gradient(to bottom right, rgba(2,6,23,.85), rgba(15,23,42,.9)),
+        url('img/bg.jpg') center/cover no-repeat;
+    color:white;
+    background-attachment: fixed;
+}
+
+.wrapper{min-height:100vh;display:flex;flex-direction:column;}
+@media(min-width:768px){.wrapper{flex-direction:row}}
+
+.sidebar{
+    width:100%;padding:36px 22px;background:rgba(255,255,255,.05);
+    backdrop-filter:blur(22px);display:flex;flex-direction:column;align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+@media(min-width:768px){
+    .sidebar{width:300px;min-height:100vh;border-right:1px solid rgba(255,255,255,.1);border-bottom:none;position:sticky;top:0;}
+}
+
+.photo-frame{
+    width:160px;height:200px;border-radius:12px;overflow:hidden;
+    border:4px solid rgba(255,255,255,.2);
+    box-shadow:0 25px 60px rgba(0,0,0,.6);
+    margin-bottom:20px;transition:.6s;
+}
+.photo-frame:hover{transform:rotate(-3deg) scale(1.05);}
+.photo-frame img{width:100%;height:100%;object-fit:cover;}
+
+.nav-btn{
+    width:100%;padding:15px 20px;border-radius:16px;
+    display:flex;align-items:center;gap:14px;
+    font-weight:700;color:rgba(255,255,255,.6);
+    cursor:pointer;transition:.3s;
+}
+.nav-btn.active{background:rgba(59,130,246,.8);color:white;box-shadow:0 10px 20px rgba(59,130,246,.3);}
+.nav-btn:hover:not(.active){background:rgba(255,255,255,.1);color:white;}
+
+.content{flex:1;padding:42px;}
+@media(max-width:768px){.content{padding:26px}}
+
+.glass{
+    background:rgba(255,255,255,.03);backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.1);
+    padding:30px;border-radius:24px;transition:.4s;
+}
+.glass:hover{background:rgba(255,255,255,.06);transform:translateY(-5px);}
+
+.tab{display:none;animation:fade .5s ease-out}
+.tab.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+
+.timeline-container{position:relative;padding-left:30px;border-left:2px solid rgba(59,130,246,.3);}
+.timeline-item{position:relative;margin-bottom:40px;}
+.timeline-dot{
+    position:absolute;left:-39px;top:5px;width:16px;height:16px;
+    background:#3b82f6;border-radius:50%;
+    border:4px solid rgba(15,23,42,1);
+}
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+
+<aside class="sidebar">
+    <div class="photo-frame">
+        <img src="img/velix.jpg" alt="Rizki">
+    </div>
+    <h2 class="text-xl font-extrabold text-center uppercase tracking-wider">M RIZKI ABDULLAH</h2>
+    <span class="text-blue-400 font-bold mb-10 text-sm tracking-widest uppercase">Mahasiswa</span>
+
+    <nav class="w-full space-y-2">
+        <div class="nav-btn active" onclick="openTab(event,'home')"><i class="fa-solid fa-house"></i> Home</div>
+        <div class="nav-btn" onclick="openTab(event,'about')"><i class="fa-solid fa-user"></i> About</div>
+        <div class="nav-btn" onclick="openTab(event,'skills')"><i class="fa-solid fa-code"></i> Skills</div>
+        <div class="nav-btn" onclick="openTab(event,'portfolio')"><i class="fa-solid fa-briefcase"></i> Portfolio</div>
+        <div class="nav-btn" onclick="openTab(event,'experience')"><i class="fa-solid fa-clock"></i> Experience</div>
+        <div class="nav-btn" onclick="openTab(event,'contact')"><i class="fa-solid fa-envelope"></i> Contact</div>
+    </nav>
+</aside>
+
+<main class="content">
+
+<section id="home" class="tab active">
+    <h1 class="text-5xl font-extrabold mb-5">Crafting <span class="text-blue-400">Clean & Modern</span> Web Experience</h1>
+    <p class="text-slate-400 mb-10 italic">"Focus on UI, clean code, and great UX."</p>
+
+    <div class="glass">
+        <h3 class="text-xl font-bold text-blue-400 mb-4">MY VISION</h3>
+        <p class="text-slate-300">
+            Membangun solusi digital yang tidak hanya fungsional, tetapi juga memberikan dampak visual yang kuat.
+        </p>
+    </div>
+</section>
+
+<section id="about" class="tab">
+    <h2 class="text-4xl font-extrabold mb-10">About <span class="text-blue-400">Me</span></h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass border-l-4 border-blue-400">🎓 Mahasiswa Web Development</div>
+        <div class="glass border-l-4 border-pink-400">🎨 UI/UX Designer Enthusiast</div>
+        <div class="glass border-l-4 border-green-400">⚙️ Laravel Backend Specialist</div>
+        <div class="glass border-l-4 border-yellow-400">🚀 Future Fullstack Engineer</div>
+    </div>
+</section>
+
+<section id="skills" class="tab">
+    <h2 class="text-4xl font-extrabold mb-10">Technical <span class="text-blue-400">Skills</span></h2>
+    <div class="glass">Laravel • Tailwind • PHP • MySQL</div>
+</section>
+
+<section id="portfolio" class="tab">
+    <h2 class="text-4xl font-extrabold mb-10">Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <img src="img/project1.jpg" class="rounded-xl">
+        <img src="img/project2.jpg" class="rounded-xl">
+        <img src="img/project3.jpg" class="rounded-xl">
+    </div>
+</section>
+
+<section id="experience" class="tab">
+    <h2 class="text-4xl font-extrabold mb-10">Experience</h2>
+    <div class="timeline-container">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="glass">2026 – Present: Fullstack Laravel Developer</div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="tab">
+    <h2 class="text-4xl font-extrabold mb-10">Contact</h2>
+    <div class="glass">📧 rizki@email.com</div>
+</section>
+
+</main>
+</div>
+
+<script>
+function openTab(e,id){
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    e.currentTarget.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
